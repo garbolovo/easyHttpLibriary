@@ -1,26 +1,60 @@
 const http = new easyHTTP()
 
-http.get('https://jsonplaceholder.typicode.com/posts', function(err, posts) {
+const post = {
+    title: 'Post Title',
+    body: 'This is the post body'
+}
 
-    // console.log(this);
-    if(err) {
-        console.error(err)
-    } else {
-        console.log(posts);
+// get posts
+// http.get('https://jsonplaceholder.typicode.com/posts', function (err, posts) {
+//
+//     // console.log(this);
+//     if (err) {
+//         console.error(err)
+//     } else {
+//         console.log(posts);
+//     }
+// })
+
+//get single post
+
+// http.get('https://jsonplaceholder.typicode.com/posts/5', function (err, post) {
+//
+//     // console.log(this);
+//     if (err) {
+//         console.error(err)
+//     } else {
+//         console.log(post);
+//     }
+// })
+
+// http.post('https://jsonplaceholder.typicode.com/posts', post, function (err, p) {
+//         if (err) {
+//             console.log(err)
+//         } else {
+//             console.log(p)
+//         }
+//     }
+// )
+
+http.put('https://jsonplaceholder.typicode.com/posts/33', post, function (err, p) {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log(p)
+        }
     }
-})
-
-console.log(http);
+)
 
 
-http.post('url', 'data', 'callback')
+
+
 
 
 
 
 
 // console.log(http);
-
 
 
 //function
@@ -38,6 +72,12 @@ http.post('url', 'data', 'callback')
 //
 //
 // }
+
+
+
+
+
+
 
 
 // first invocation
@@ -67,16 +107,16 @@ const car = {
         console.log('BEEEEP !', this);
 
     },
-    toTurnOn: () =>  {
+    toTurnOn: () => {
         console.log('GO !', this);
         this.getThis()
     },
-    toTurnOff: ( )=> {
+    toTurnOff: () => {
         console.log('Stop !', this);
-        let toExitTheCar = function() {
+        let toExitTheCar = function () {
             console.log('Dont gorget to close the car');
             console.log(this);
-        
+
         }
 
         toExitTheCar()
