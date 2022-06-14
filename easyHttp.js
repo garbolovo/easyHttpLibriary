@@ -1,10 +1,6 @@
 // easyHTTP constructor
 function easyHTTP() {
     this.http = new XMLHttpRequest();
-    // console.log('This is: ' + this);
-
-
-    this.message = 'Hello World !'
 }
 
 
@@ -25,11 +21,8 @@ easyHTTP.prototype.get = function (url, callback) {
         }
     }
 
-
     this.http.send()
-
 }
-
 
 //Send data
 easyHTTP.prototype.post = function (url, data, callback) {
@@ -59,7 +52,6 @@ easyHTTP.prototype.put = function (url, data, callback) {
     this.http.open('PUT', url, true);
     this.http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     this.http.onload = function () {
-        // console.log(data)
         if (this.status === 200) {
             const ppp = JSON.parse(this.responseText)
             callback(null, ppp)
@@ -70,5 +62,24 @@ easyHTTP.prototype.put = function (url, data, callback) {
 
     this.http.send(JSON.stringify(data))
 
+}
 
+//Delete data
+
+easyHTTP.prototype.delete = function (url, callback) {
+    let self = this
+    this.http.open('DELETE', url, true);
+    this.http.onload = function () {
+
+        if (self.http.status === 200) {
+
+
+
+            callback(null, 'Post Deleted')
+        } else {
+            callback('Error, post has not been deleted' + ' ' + self.http.status)
+        }
+    }
+
+    this.http.send()
 }
